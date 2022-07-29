@@ -35,5 +35,16 @@ namespace HanoiTowers.Tests
 
             Assert.True(result);
         }
+
+        [Fact]
+        public void ThrowExceptionIfMovingBlockHeavier()
+        {
+            Stack<HanoiBlock> leftStack = new Stack<HanoiBlock>();
+            leftStack.Push(new HanoiBlock(2));
+            Stack<HanoiBlock> centerStack = new Stack<HanoiBlock>();
+            centerStack.Push(new HanoiBlock(1));
+            HanoiTower hanoiTower = new HanoiTower(leftStack, centerStack, new Stack<HanoiBlock>());
+            Assert.Throws<HanoiBlockMoveException>(() => hanoiTower.MoveBlock(HanoiStackType.Left, HanoiStackType.Center));
+        }
     }
 }

@@ -6,4 +6,10 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="HanoiRecursiveComputer.cs\**" />
+    <EmbeddedResource Remove="HanoiRecursiveComputer.cs\**" />
+    <None Remove="HanoiRecursiveComputer.cs\**" />
+  </ItemGroup>
+
 </Project>

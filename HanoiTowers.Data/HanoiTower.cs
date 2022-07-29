@@ -65,7 +65,12 @@ namespace HanoiTowers.Data
 
         public void MoveBlock(HanoiStackType from, HanoiStackType to)
         {
-            this[to].Push(this[from].Pop());
+            HanoiBlock movingBlock = this[from].Pop();
+            if(this[to].Count !=0 && movingBlock.Weight >= this[to].Peek().Weight)
+            {
+                throw new HanoiBlockMoveException("Moving block havier than pyramid block", movingBlock, this[to].Peek());
+            }
+            this[to].Push(movingBlock);
         }
     }
 }

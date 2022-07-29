@@ -8,9 +8,22 @@ namespace HanoiTowers.Data
 {
     public class HanoiTower
     {
-        private Stack<HanoiBlock> _leftStack { get; }
-        private Stack<HanoiBlock> _centerStack { get; }
-        private Stack<HanoiBlock> _rightStack { get; }
+        private Stack<HanoiBlock> _leftStack;
+        private Stack<HanoiBlock> _centerStack;
+        private Stack<HanoiBlock> _rightStack;
+
+        public HanoiTower(Stack<HanoiBlock> stack, HanoiStackType type)
+        {
+            foreach(var enumType in Enum.GetValues<HanoiStackType>())
+            {
+                if(enumType == type)
+                {
+                    this[type] = stack;
+                    continue;
+                }
+                this[enumType] = new Stack<HanoiBlock>();
+            }
+        }
 
         public HanoiTower(Stack<HanoiBlock> leftStack, Stack<HanoiBlock> centerStack, Stack<HanoiBlock> rightStack)
         {
@@ -23,12 +36,29 @@ namespace HanoiTowers.Data
         {
             get
             {
-                switch (type)
+                return type switch
                 {
-                    case HanoiStackType.Left: return _leftStack;
-                    case HanoiStackType.Center: return _centerStack;
-                    case HanoiStackType.Right: return _rightStack;
-                    default: throw new Exception("Unknown Property Name");
+                    HanoiStackType.Left => _leftStack,
+                    HanoiStackType.Center => _centerStack,
+                    HanoiStackType.Right => _rightStack,
+                    _ => throw new Exception("Unknown Property Name"),
+                };
+            }
+            private set
+            {
+                switch(type)
+                {
+                    case HanoiStackType.Left: 
+                        _leftStack = value;
+                        break;
+                    case HanoiStackType.Right:
+                        _centerStack = value;
+                        break;
+                    case HanoiStackType.Center:
+                        _centerStack = value;
+                        break;
+                    default:
+                        throw new Exception("Unknown Property Name");
                 }
             }
         }

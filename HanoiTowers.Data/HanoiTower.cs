@@ -51,11 +51,11 @@ namespace HanoiTowers.Data
                     case HanoiStackType.Left: 
                         _leftStack = value;
                         break;
-                    case HanoiStackType.Right:
-                        _centerStack = value;
-                        break;
                     case HanoiStackType.Center:
                         _centerStack = value;
+                        break;
+                    case HanoiStackType.Right:
+                        _rightStack = value;
                         break;
                     default:
                         throw new Exception("Unknown Property Name");

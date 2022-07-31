@@ -5,8 +5,99 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:HanoiTowers.Desctop.View"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid Background="#B0F9E3">
-            
+             d:DesignHeight="350" d:DesignWidth="600"
+             MinHeight="350"
+             MinWidth="300">
+    <UserControl.Resources>
+        <Style TargetType="Button">
+            <Setter Property="Background"
+                    Value="#B0F9E3"/>
+            <Setter Property="Foreground"
+                    Value="#494949"/>
+            <Setter Property="BorderBrush"
+                    Value="#494949"/>
+        </Style>
+    </UserControl.Resources>
+
+    <Grid Background="#D7FCF5">
+        <Grid Margin="25, 30" >
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+            <StackPanel Grid.Row="0"
+                        Orientation="Horizontal">
+                <Button Content="Create new tower"
+                        FontSize="12"
+                        Height="25"
+                        Width="150"/>
+            </StackPanel>
+            <Grid Grid.Row="1">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <StackPanel HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <Border BorderBrush="#494949"
+                            BorderThickness="1"
+                            CornerRadius="3">
+                        <Grid Height="200"
+                          Width="120"
+                          Background="#EEFFFA">
+                            <ItemsControl></ItemsControl>
+                        </Grid>
+                    </Border>
+
+                    <Button Height="20" 
+                            FontSize="11"
+                            Margin="0,10,0,0"
+                            Width="50"
+                            Content="Move"/>
+                </StackPanel>
+                <StackPanel Grid.Column="1"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <Border BorderBrush="#494949"
+                            BorderThickness="1"
+                            CornerRadius="3">
+                        <Grid Height="200"
+                          Width="120"
+                          Background="#EEFFFA">
+                            <ItemsControl></ItemsControl>
+                        </Grid>
+                    </Border>
+
+                    <Button Height="20" 
+                            FontSize="11"
+                            Margin="0,10,0,0"
+                            Width="50"
+                            Content="Move"/>
+                </StackPanel>
+                <StackPanel Grid.Column="2"
+                            HorizontalAlignment="Center"
+                            VerticalAlignment="Center">
+                    <Border BorderBrush="#494949"
+                            BorderThickness="1"
+                            CornerRadius="3">
+                        <Grid Height="200"
+                          Width="120"
+                          Background="#EEFFFA">
+                            <ItemsControl></ItemsControl>
+                        </Grid>
+                    </Border>
+
+                    <Button Height="20" 
+                            FontSize="11"
+                            Margin="0,10,0,0"
+                            Width="50"
+                            Content="Move"
+                            IsEnabled="False"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+
     </Grid>
 </UserControl>

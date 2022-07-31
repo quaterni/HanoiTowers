@@ -5,7 +5,9 @@ VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HanoiTowers.Data", "HanoiTowers.Data\HanoiTowers.Data.csproj", "{56668F88-F810-4D39-A6FB-818B357A9EF6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HanoiTowers.Tests", "HanoiTowers.Tests\HanoiTowers.Tests.csproj", "{59BDB035-31D4-406B-BB78-B7392A6C4E38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "HanoiTowers.Tests", "HanoiTowers.Tests\HanoiTowers.Tests.csproj", "{59BDB035-31D4-406B-BB78-B7392A6C4E38}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HanoiTowers.Desctop", "HanoiTowers.Desctop\HanoiTowers.Desctop.csproj", "{770107A2-A5C9-49B0-A2E7-66CFCF26754A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{59BDB035-31D4-406B-BB78-B7392A6C4E38}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59BDB035-31D4-406B-BB78-B7392A6C4E38}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59BDB035-31D4-406B-BB78-B7392A6C4E38}.Release|Any CPU.Build.0 = Release|Any CPU
+		{770107A2-A5C9-49B0-A2E7-66CFCF26754A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{770107A2-A5C9-49B0-A2E7-66CFCF26754A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{770107A2-A5C9-49B0-A2E7-66CFCF26754A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{770107A2-A5C9-49B0-A2E7-66CFCF26754A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

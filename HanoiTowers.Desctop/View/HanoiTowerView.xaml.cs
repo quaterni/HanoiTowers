@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace HanoiTowers.Desctop
+namespace HanoiTowers.Desctop.View
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for HanoiTowerView.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class HanoiTowerView : UserControl
     {
-        public MainWindow()
+        public HanoiTowerView()
         {
             InitializeComponent();
         }

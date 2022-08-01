@@ -8,17 +8,17 @@ namespace HanoiTowers.Data
 {
     public class HanoiRecursiveComputer : IHanoiComputer
     {
-        public void CumputeTower(int pyramidWeight, HanoiTower tower, HanoiStackType from, HanoiStackType to)
+        public void CumputeTower(int blockCount, HanoiTower tower, HanoiStackType from, HanoiStackType to)
         {
-            if (pyramidWeight == 1)
+            if (blockCount == 1)
             {
                 tower.MoveBlock(from, to);
                 return;
             }
             HanoiStackType tmp = (HanoiStackType)(6 - (int)from - (int)to);
-            CumputeTower(pyramidWeight - 1, tower, from, tmp);
+            CumputeTower(blockCount - 1, tower, from, tmp);
             tower.MoveBlock(from, to);
-            CumputeTower(pyramidWeight - 1, tower, tmp, to);
+            CumputeTower(blockCount - 1, tower, tmp, to);
         }
     }
 }

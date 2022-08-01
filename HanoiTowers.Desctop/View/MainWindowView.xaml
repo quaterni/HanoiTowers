@@ -11,7 +11,8 @@
         <DataTemplate DataType="{x:Type viewModel:HanoiTowerViewModel}">
             <local:HanoiTowerView/>
         </DataTemplate>
-                      
+          
+        
     </Window.Resources>
     <Grid>
         <ContentControl Content="{Binding CurrentViewModel}"/>

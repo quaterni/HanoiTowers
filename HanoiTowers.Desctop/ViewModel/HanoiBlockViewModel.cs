@@ -1,9 +1,11 @@
 ﻿using HanoiTowers.Data;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace HanoiTowers.Desctop.ViewModel
 {
@@ -13,11 +15,24 @@ namespace HanoiTowers.Desctop.ViewModel
 
         public HanoiBlock HanoiBlock
         {
+            get { return _hanoiBlock; }
+        }
+
+        private bool _isActive;
+
+        public bool IsActive
+        {
             get
+            { 
+                return _isActive; 
+            }
+            set
             {
-                return _hanoiBlock;
+                _isActive = value; 
+                OnPropertyChanged(nameof(IsActive));
             }
         }
+
 
         private double _blockWidth;
 
@@ -38,6 +53,13 @@ namespace HanoiTowers.Desctop.ViewModel
         {
             _hanoiBlock = hanoiBlock;
             _blockWidth = blockWidth;
+            _hanoiBlock.PropertyChanged += OnActivityChanged;
+        }
+
+        private void OnActivityChanged(object? sender, PropertyChangedEventArgs e)
+        {
+            Application.Current.Dispatcher.Invoke(() => IsActive = _hanoiBlock.IsActive);
+            Task.Delay(400).Wait();
         }
     }
 }

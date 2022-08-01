@@ -74,8 +74,10 @@ namespace HanoiTowers.Data
             {
                 throw new HanoiBlockMoveException("Moving block havier than pyramid block", movingBlock, this[to].Peek());
             }
+            movingBlock.IsActive = true;
             this[to].Push(movingBlock);
             OnBlockMovedEvent(movingBlock, from, to);
+            movingBlock.IsActive = false;
         }
 
         private void OnBlockMovedEvent(HanoiBlock movingBlock, HanoiStackType fromStack, HanoiStackType toStack)

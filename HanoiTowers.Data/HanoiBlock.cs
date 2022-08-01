@@ -1,14 +1,37 @@
-﻿namespace HanoiTowers.Data
+﻿using System.ComponentModel;
+
+namespace HanoiTowers.Data
 {
-    public class HanoiBlock
+    public class HanoiBlock : INotifyPropertyChanged
     {
         public HanoiBlock(int weight)
         {
             Weight = weight;
-            Status = BlockStatus.Done;
+            IsActive = false;
         }
 
         public int Weight { get; }
-        public BlockStatus Status { get; set; }
+
+        private bool _isActive;
+
+        public bool IsActive
+        {
+            get
+            {
+                return _isActive;
+            }
+            set
+            {
+                _isActive = value;
+                OnPropertyChanged(nameof(IsActive));
+            }
+        }
+
+        public event PropertyChangedEventHandler? PropertyChanged;
+
+        private void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
     }
 }

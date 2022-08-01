@@ -30,6 +30,7 @@ namespace HanoiTowers.Desctop.Commands
                 int blockCount = ((DialogViewModel)dialogView.DataContext).Result;
                 HanoiTower hanoiTower = new HanoiTowerCreator().CreateHanoiTower(blockCount);
                 _viewModel.CurrentHanoiTower = hanoiTower;
+                hanoiTower.BlockMoved += _viewModel.OnBlockMoved;
             }
         }
     }

@@ -20,7 +20,7 @@ namespace HanoiTowers.Desctop.Commands
 
         public event EventHandler? CanExecuteChanged;
 
-        public bool CanExecute(object? parameter)
+        public virtual bool CanExecute(object? parameter)
         {
             return !_isExecuting;
         }
@@ -37,6 +37,11 @@ namespace HanoiTowers.Desctop.Commands
             {
                 OnExeption(ex);
             }
+            finally
+            {
+                _isExecuting = false;
+                OnFinally();
+            }
         }
 
         public abstract Task ExecuteAsunc(object? parameter);
@@ -50,5 +55,11 @@ namespace HanoiTowers.Desctop.Commands
         {
             throw new NotImplementedException($"Excaption handler not implemented.");
         }
+
+        public virtual void OnFinally()
+        {
+
+        }
+        
     }
 }

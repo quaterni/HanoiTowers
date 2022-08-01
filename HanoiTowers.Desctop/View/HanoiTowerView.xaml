@@ -64,7 +64,9 @@
                             FontSize="11"
                             Margin="0,10,0,0"
                             Width="50"
-                            Content="Move"/>
+                            Content="Move"
+                            Command="{Binding MoveTowerCommand}"
+                            CommandParameter="1"/>
                 </StackPanel>
                 <StackPanel Grid.Column="1"
                             HorizontalAlignment="Center"
@@ -91,7 +93,9 @@
                             FontSize="11"
                             Margin="0,10,0,0"
                             Width="50"
-                            Content="Move"/>
+                            Content="Move"
+                            Command="{Binding MoveTowerCommand}"
+                            CommandParameter="2"/>
                 </StackPanel>
                 <StackPanel Grid.Column="2"
                             HorizontalAlignment="Center"
@@ -120,7 +124,8 @@
                             Margin="0,10,0,0"
                             Width="50"
                             Content="Move"
-                            IsEnabled="False"/>
+                            Command="{Binding MoveTowerCommand}"
+                            CommandParameter="3"/>
                 </StackPanel>
             </Grid>
         </Grid>

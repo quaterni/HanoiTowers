@@ -2,6 +2,6 @@
 {
     public interface IHanoiComputer
     {
-        void CumputeTower(int pyramidWeight, HanoiTower tower, HanoiStackType from, HanoiStackType to);
+        void CumputeTower(int blockCount, HanoiTower tower, HanoiStackType from, HanoiStackType to);
     }
 }

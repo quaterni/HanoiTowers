@@ -25,6 +25,10 @@ namespace HanoiTowers.Data
             }
         }
 
+        public delegate void BlockMovedHandler(HanoiTower sender, BlockMovedEventArgs e);
+
+        public event BlockMovedHandler? BlockMoved;
+
         public HanoiTower(Stack<HanoiBlock> leftStack, Stack<HanoiBlock> centerStack, Stack<HanoiBlock> rightStack)
         {
             _leftStack = leftStack;
@@ -71,6 +75,13 @@ namespace HanoiTowers.Data
                 throw new HanoiBlockMoveException("Moving block havier than pyramid block", movingBlock, this[to].Peek());
             }
             this[to].Push(movingBlock);
+            OnBlockMovedEvent(movingBlock, from, to);
+        }
+
+        private void OnBlockMovedEvent(HanoiBlock movingBlock, HanoiStackType fromStack, HanoiStackType toStack)
+        {
+            BlockMovedEventArgs e = new(movingBlock, fromStack, toStack);
+            BlockMoved?.Invoke(this, e);
         }
     }
 }

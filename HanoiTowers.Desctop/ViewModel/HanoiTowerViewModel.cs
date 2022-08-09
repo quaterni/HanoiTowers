@@ -28,22 +28,24 @@ namespace HanoiTowers.Desctop.ViewModel
             {
                 _currentHanoiTower = value;
                 OnPropertyChanged(nameof(CurrentHanoiTower));
-                EvaluateTower();
+
             }
         }
 
-        private bool _isBusy = false;
+        private HanoiTowerViewModelState _state;
 
-        public bool IsBusy
+        public HanoiTowerViewModelState State
         {
             get
             {
-                return _isBusy;
+                return _state;
             }
-            set 
-            { 
-                _isBusy = value;
-                OnPropertyChanged(nameof(IsBusy));
+            set
+            {
+                _state = value;
+                OnPropertyChanged(nameof(State));
+                MoveTowerCommand.RaiseCanExecute();
+                CreateTowerCommand.RaiseCanExecute();
             }
         }
 
@@ -112,9 +114,9 @@ namespace HanoiTowers.Desctop.ViewModel
             }
         }
 
-        public ICommand CreateTowerCommand { get; set; }
+        public CommandBase CreateTowerCommand { get; set; }
 
-        public ICommand MoveTowerCommand { get; set; }
+        public AsyncCommandBase MoveTowerCommand { get; set; }
 
 
         public HanoiTowerViewModel()
@@ -125,6 +127,16 @@ namespace HanoiTowers.Desctop.ViewModel
             CenterStack = new();
             RightStack = new();
             _blocks = new();
+            State = HanoiTowerViewModelState.Creation;
+        }
+
+        public void SetTower(int blockCount)
+        {
+            HanoiTower hanoiTower = new HanoiTowerCreator().CreateHanoiTower(blockCount);
+            this.CurrentHanoiTower = hanoiTower;
+            hanoiTower.BlockMoved += this.OnBlockMoved;
+            EvaluateTower();
+            State = HanoiTowerViewModelState.Readiness;
         }
 
         private void EvaluateTower()

@@ -39,21 +39,21 @@ namespace HanoiTowers.Desctop.Commands
             if(towerLocation != type)
             {
                 int blockCount = _viewModel.CurrentHanoiTower[towerLocation].Count;
-                _viewModel.IsBusy = true;
+                _viewModel.State = HanoiTowerViewModelState.Movement;
 
                 await Task.Run(() => _computer.CumputeTower(blockCount, _viewModel.CurrentHanoiTower, towerLocation, type));
             }
         }
 
-        public override void OnExeption(Exception ex)
+        protected override void OnExeption(Exception ex)
         {
             base.OnExeption(ex);
         }
 
-        public override void OnFinally()
+        protected override void OnFinally()
         {
             base.OnFinally();
-            _viewModel.IsBusy = false;
+            _viewModel.State = HanoiTowerViewModelState.Readiness;
         }
     }
 }

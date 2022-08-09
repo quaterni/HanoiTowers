@@ -46,20 +46,19 @@ namespace HanoiTowers.Desctop.Commands
 
         public abstract Task ExecuteAsunc(object? parameter);
 
-        protected void OnCanExecute()
+        public void RaiseCanExecute()
         {
-            CanExecuteChanged?.Invoke(this, new EventArgs());
+            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
         }
 
-        public virtual void OnExeption(Exception ex)
+        protected virtual void OnExeption(Exception ex)
         {
             throw new NotImplementedException($"Excaption handler not implemented.");
         }
 
-        public virtual void OnFinally()
+        protected virtual void OnFinally()
         {
-
         }
-        
+
     }
 }

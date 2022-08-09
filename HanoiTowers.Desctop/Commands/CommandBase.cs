@@ -18,9 +18,10 @@ namespace HanoiTowers.Desctop.Commands
 
         public abstract void Execute(object? parameter);
 
-        protected void OnCanExecuteChanged()
+        public void RaiseCanExecute()
         {
-            CanExecuteChanged?.Invoke(this, new EventArgs());
+            CanExecuteChanged?.Invoke(this, EventArgs.Empty);
         }
+
     }
 }

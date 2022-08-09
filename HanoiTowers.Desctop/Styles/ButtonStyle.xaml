@@ -47,70 +47,76 @@
                                 <Condition Property="IsEnabled" Value="True"/>
                                 <Condition Property="IsMouseOver" Value="True"/>
                             </MultiTrigger.Conditions>
-                            <MultiTrigger.EnterActions>
-                                <BeginStoryboard>
-                                    <Storyboard x:Name="MouseOverAnimation">
-                                        <ColorAnimation Storyboard.TargetName="BackgroundBrush"
-                                                        Storyboard.TargetProperty="Color"
-                                                        To="{StaticResource MouseOverBackgroundColor}"
-                                                        Duration="0:0:0:0.001"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </MultiTrigger.EnterActions>
+
+                            <Setter TargetName="t" Property="Background">
+                                <Setter.Value>
+                                    <SolidColorBrush  Color="{StaticResource MouseOverBackgroundColor}"/>
+                                </Setter.Value>
+                            </Setter>
+
+                            <Setter TargetName="t" Property="BorderBrush">
+                                <Setter.Value>
+                                    <SolidColorBrush  Color="{StaticResource Stroke}"/>
+                                </Setter.Value>
+                            </Setter>
                             
-                            <MultiTrigger.ExitActions>
-                                <BeginStoryboard>
-                                    <Storyboard x:Name="MouseOutAnimation">
-                                        <ColorAnimation Storyboard.TargetName="BackgroundBrush"
-                                                        Storyboard.TargetProperty="Color"
-                                                        To="{StaticResource BackgroundColor}"
-                                                        Duration="0:0:0:0.001"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </MultiTrigger.ExitActions>
+                            <Setter Property="Foreground">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="{StaticResource Stroke}"/>
+                                </Setter.Value>
+                            </Setter>
+
+                        </MultiTrigger>
+
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsEnabled" Value="True"/>
+                                <Condition Property="IsMouseOver" Value="False"/>
+                            </MultiTrigger.Conditions>
+
+                            <Setter TargetName="t" Property="Background">
+                                <Setter.Value>
+                                    <SolidColorBrush  Color="{StaticResource BackgroundColor}"/>
+                                </Setter.Value>
+                            </Setter>
+
+                            <Setter TargetName="t" Property="BorderBrush">
+                                <Setter.Value>
+                                    <SolidColorBrush  Color="{StaticResource Stroke}"/>
+                                </Setter.Value>
+                            </Setter>
+                            <Setter Property="Foreground">
+                                    <Setter.Value>
+                                        <SolidColorBrush Color="{StaticResource Stroke}"/>
+                                    </Setter.Value>
+                                </Setter>
+
                         </MultiTrigger>
 
                         <Trigger Property="IsEnabled" Value="False">
-                            <Trigger.EnterActions>
-                                <BeginStoryboard>
-                                    <Storyboard  x:Name="ButtonDisableAnimation">
-                                        <ColorAnimation Storyboard.TargetName="BackgroundBrush"
-                                                        Storyboard.TargetProperty="Color"
-                                                        To="{StaticResource DisabledBackgroundColor}"
-                                                        Duration="0:0:0:0.001"/>
+                            <Setter TargetName="t" Property="Background">
+                                <Setter.Value>
+                                    <SolidColorBrush  Color="{StaticResource DisabledBackgroundColor}"/>
+                                </Setter.Value>
+                            </Setter>
 
-                                        <ColorAnimation Storyboard.TargetName="StrokeBrush"
-                                                        Storyboard.TargetProperty="Color"
-                                                        To="{StaticResource DisabledStroke}"
-                                                        Duration="0:0:0:0.001"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.EnterActions>
+                            <Setter TargetName="t" Property="BorderBrush">
+                                <Setter.Value>
+                                    <SolidColorBrush  Color="{StaticResource DisabledStroke}"/>
+                                </Setter.Value>
+                            </Setter>
 
-                            <Trigger.ExitActions>
-                                <BeginStoryboard>
-                                    <Storyboard x:Name="ButtonEnableAnimation">
-                                        <ColorAnimation Storyboard.TargetName="StrokeBrush"
-                                                        Storyboard.TargetProperty="Color"
-                                                        To="{StaticResource BackgroundColor}"
-                                                        Duration="0:0:0:0.001"/>
-                                    </Storyboard>
-                                </BeginStoryboard>
-                            </Trigger.ExitActions>
+                            <Setter Property="Foreground">
+                                <Setter.Value>
+                                    <SolidColorBrush Color="{StaticResource DisabledStroke}"/>
+                                </Setter.Value>
+                            </Setter>
                         </Trigger>
                     </ControlTemplate.Triggers>  
                 </ControlTemplate>
             </Setter.Value>
         </Setter>
-        <Style.Triggers>
-            <Trigger Property="IsEnabled" Value="False">
-                <Setter Property="Foreground">
-                    <Setter.Value>
-                        <SolidColorBrush Color="{StaticResource DisabledStroke}"/>
-                    </Setter.Value>
-                </Setter>
-            </Trigger>
-        </Style.Triggers>
+       
     </Style>
 
 </ResourceDictionary>

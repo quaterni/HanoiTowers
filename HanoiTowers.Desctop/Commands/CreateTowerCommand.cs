@@ -14,10 +14,23 @@ namespace HanoiTowers.Desctop.Commands
 
         private HanoiTowerViewModel _viewModel;
 
+        private bool _canExecute = true;
+
 
         public CreateTowerCommand(HanoiTowerViewModel viewModel)
         {
             _viewModel = viewModel;
+        }
+
+        public override bool CanExecute(object? parameter)
+        {
+            bool result = _viewModel.State != HanoiTowerViewModelState.Movement;
+            if (_canExecute != result)
+            {
+                _canExecute = result;
+               // this.OnCanExecuteChanged();
+            }
+            return _canExecute;
         }
 
         public override void Execute(object? parameter)
@@ -28,9 +41,7 @@ namespace HanoiTowers.Desctop.Commands
             if (((DialogViewModel)dialogView.DataContext).IsCorrectInput && dialogView.DialogResult == true)
             {
                 int blockCount = ((DialogViewModel)dialogView.DataContext).Result;
-                HanoiTower hanoiTower = new HanoiTowerCreator().CreateHanoiTower(blockCount);
-                _viewModel.CurrentHanoiTower = hanoiTower;
-                hanoiTower.BlockMoved += _viewModel.OnBlockMoved;
+                _viewModel.SetTower(blockCount);
             }
         }
     }

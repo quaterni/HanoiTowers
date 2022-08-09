@@ -9,7 +9,17 @@ namespace HanoiTowers.Desctop.Commands
 {
     public abstract class CommandBase : ICommand
     {
-        public event EventHandler? CanExecuteChanged;
+        public event EventHandler? CanExecuteChanged
+        {
+            add
+            {
+                CommandManager.RequerySuggested += value;
+            }
+            remove
+            {
+                CommandManager.RequerySuggested -= value;
+            }
+        }
 
         public virtual bool CanExecute(object? parameter)
         {
@@ -18,9 +28,6 @@ namespace HanoiTowers.Desctop.Commands
 
         public abstract void Execute(object? parameter);
 
-        protected void OnCanExecuteChanged()
-        {
-            CanExecuteChanged?.Invoke(this, new EventArgs());
-        }
+
     }
 }

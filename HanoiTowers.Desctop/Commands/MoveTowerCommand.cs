@@ -39,7 +39,7 @@ namespace HanoiTowers.Desctop.Commands
             if(towerLocation != type)
             {
                 int blockCount = _viewModel.CurrentHanoiTower[towerLocation].Count;
-                _viewModel.IsBusy = true;
+                _viewModel.State = HanoiTowerViewModelState.Movement;
 
                 await Task.Run(() => _computer.CumputeTower(blockCount, _viewModel.CurrentHanoiTower, towerLocation, type));
             }
@@ -53,7 +53,7 @@ namespace HanoiTowers.Desctop.Commands
         public override void OnFinally()
         {
             base.OnFinally();
-            _viewModel.IsBusy = false;
+            _viewModel.State = HanoiTowerViewModelState.Readiness;
         }
     }
 }

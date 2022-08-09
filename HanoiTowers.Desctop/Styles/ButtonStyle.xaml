@@ -90,9 +90,14 @@
                             <Trigger.ExitActions>
                                 <BeginStoryboard>
                                     <Storyboard x:Name="ButtonEnableAnimation">
-                                        <ColorAnimation Storyboard.TargetName="StrokeBrush"
+                                        <ColorAnimation Storyboard.TargetName="BackgroundBrush"
                                                         Storyboard.TargetProperty="Color"
                                                         To="{StaticResource BackgroundColor}"
+                                                        Duration="0:0:0:0.001"/>
+
+                                        <ColorAnimation Storyboard.TargetName="StrokeBrush"
+                                                        Storyboard.TargetProperty="Color"
+                                                        To="{StaticResource Stroke}"
                                                         Duration="0:0:0:0.001"/>
                                     </Storyboard>
                                 </BeginStoryboard>

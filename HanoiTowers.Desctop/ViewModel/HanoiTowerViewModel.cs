@@ -28,7 +28,21 @@ namespace HanoiTowers.Desctop.ViewModel
             {
                 _currentHanoiTower = value;
                 OnPropertyChanged(nameof(CurrentHanoiTower));
-                EvaluateTower();
+            }
+        }
+
+        private HanoiTowerViewModelState _state;
+
+        public HanoiTowerViewModelState State
+        {
+            get
+            {
+                return _state;
+            }
+            set
+            {
+                _state = value;
+                OnPropertyChanged(nameof(State));
             }
         }
 
@@ -125,6 +139,16 @@ namespace HanoiTowers.Desctop.ViewModel
             CenterStack = new();
             RightStack = new();
             _blocks = new();
+            State = HanoiTowerViewModelState.Creation;
+        }
+
+        public void SetTower(int blockCount)
+        {
+            HanoiTower hanoiTower = new HanoiTowerCreator().CreateHanoiTower(blockCount);
+            this.CurrentHanoiTower = hanoiTower;
+            hanoiTower.BlockMoved += this.OnBlockMoved;
+            EvaluateTower();
+            State = HanoiTowerViewModelState.Readiness;
         }
 
         private void EvaluateTower()
